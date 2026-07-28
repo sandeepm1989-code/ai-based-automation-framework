@@ -2,10 +2,11 @@ import { test, expect } from '@/factories/pageFactory';
 import * as validator from '@/utils/validators';
 import * as aiHelper from '@/utils/aiHelper';
 import { smartClick } from '@/utils/actionHelper';
+import { LoginPage } from '@/layers/pages/common/loginPage';
 
 test.describe('Scenario 1: AI-Assisted Hybrid Workflow', () => {
 
-  test('Validate API data integrity with MD5, AI analysis, and sync with UI', async ({ request, loginPage, inventoryPage }) => {
+  test('Validate API data integrity with MD5, AI analysis, and sync with UI', async ({ request, page, inventoryPage }) => {
     
     // --- STEP 1: API Request & MD5 Validation ---
     const apiResponse = await request.get('https://reqres.in/api/users/2', {
@@ -30,6 +31,7 @@ test.describe('Scenario 1: AI-Assisted Hybrid Workflow', () => {
     expect(isAiValid).toBe(true);
 
     // --- STEP 3: UI Workflow using Page Factory ---
+    const loginPage = new LoginPage(page); // pass Playwright page
     await loginPage.navigateTo();
     await loginPage.login('standard_user', 'secret_sauce');
 
@@ -45,9 +47,9 @@ test.describe('Scenario 1: AI-Assisted Hybrid Workflow', () => {
 
 test.describe('Scenario 2: AI Self-Healing Locators', () => {
 
-  test('Should self-heal when clicking an outdated element selector', async ({ loginPage,
-    inventoryPage,page }) => {
+  test('Should self-heal when clicking an outdated element selector', async ({ inventoryPage,page }) => {
     // 1. Navigate & Login via POM
+    const loginPage = new LoginPage(page); // pass Playwright page
     await loginPage.navigateTo();
     await loginPage.login('standard_user', 'secret_sauce');
 
@@ -67,8 +69,7 @@ test.describe('Scenario 2: AI Self-Healing Locators', () => {
 
 test.describe('Scenario 3: Dynamic Insurance Quote Engine Validation', () => {
 
-  test('Validate Backend API Quote integrity with MD5 & UI Quote Sync with AI', async ({ request, loginPage,
-    inventoryPage, page, cartPage, checkoutPage }) => {
+  test('Validate Backend API Quote integrity with MD5 & UI Quote Sync with AI', async ({ request, inventoryPage, page, cartPage, checkoutPage }) => {
 
     // --- STEP 1: API Quote Generation ---
     const apiResponse = await request.get('https://jsonplaceholder.typicode.com/users/2');
@@ -88,6 +89,7 @@ test.describe('Scenario 3: Dynamic Insurance Quote Engine Validation', () => {
     expect(schemaHash).toBeDefined();
 
     // --- STEP 3: UI Workflow using Page Factory ---
+    const loginPage = new LoginPage(page); // pass Playwright page
     await loginPage.navigateTo();
     await loginPage.login('standard_user', 'secret_sauce');
 

@@ -2,11 +2,14 @@ import { Page, Locator } from '@playwright/test';
 import { BasePage } from '../basePage';
 
 export class LoginPage extends BasePage {
+
+  constructor(page: Page) {
+    super(page); // 👈 THIS IS CRITICAL. It assigns 'page' to 'this.page' in BasePage.
+  }
   
-  readonly page: Page;
-  readonly usernameInput: Locator;
-  readonly passwordInput: Locator;
-  readonly loginButton: Locator;
+  readonly usernameInput: Locator = this.page.locator('#user-name');
+  readonly passwordInput: Locator = this.page.locator('#password');
+  readonly loginButton: Locator = this.page.locator('#login-button');
 
   async navigateTo(url?: string) {
     await super.navigateTo(url);

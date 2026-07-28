@@ -16,3 +16,6 @@ monocart-report/
 # Misc
 .DS_Store
 *.log
+/reports
+/reports
+/reports
