@@ -1,0 +1,35 @@
+{
+  "name": "infrainsure-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:headless": "npx playwright test --project=chromium"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.62.0",
+    "@types/node": "^26.1.2",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
+    "dotenv": "^17.4.2",
+    "monocart-reporter": "^2.12.4",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@types/pg": "^8.20.0",
+    "openai": "^6.49.0",
+    "pg": "^8.22.0",
+    "playwright": "^1.61.1",
+    "playwright-core": "^1.61.1",
+    "undici-types": "^8.3.0",
+    "xlsx": "^0.18.5"
+  },
+  "directories": {
+    "test": "tests"
+  }
+}

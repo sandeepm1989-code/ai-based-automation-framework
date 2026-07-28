@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Test Results & Reports
+test-results/
+playwright-report/
+allure-results/
+allure-report/
+.reports/
+extent-reports/
+monocart-report/
+
+# Environment variables & secrets
+.env
+
+# Misc
+.DS_Store
+*.log
